@@ -13,7 +13,7 @@
 <p>Bet: {bet}</p>
 
 {#if gameOn}
-  <Game />
+  <Game bind:bet />
 {:else if rewardTime}
   <Reward />
 {:else}

@@ -1,5 +1,7 @@
 <script>
+  import { beforeUpdate } from "svelte";
   import { getRandomHand, judgeGame } from "../utils/helper";
+  export let bet;
   let yourHand;
   let cpuHand;
   $: result = judgeGame(yourHand, cpuHand);
