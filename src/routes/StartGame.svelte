@@ -16,10 +16,23 @@
   };
 </script>
 
-<button on:click="{increaseBet}">Insert Coin</button>
-{#if noMore}
-  <p>You cannot bet more than 3</p>
-{/if}
-{#if bet > 0}
-  <button on:click="{startGame}">Start Game</button>
-{/if}
+<div>
+  <div class="messageDiv">
+    {#if noMore}
+      <p>You cannot bet more than 3</p>
+    {/if}
+  </div>
+
+  <button on:click="{increaseBet}">Insert Coin</button>
+  <div>
+    {#if bet > 0}
+      <button on:click="{startGame}">Start Game</button>
+    {/if}
+  </div>
+</div>
+
+<style>
+  .messageDiv {
+    height: 30px;
+  }
+</style>

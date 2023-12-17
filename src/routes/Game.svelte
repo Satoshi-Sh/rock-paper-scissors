@@ -4,40 +4,48 @@
   export let bet;
   export let rewardTime;
   export let gameOn;
+  const hands = ["Rock", "Paper", "Scissors"];
   let isDone = false;
+  let message;
   let yourHand;
   let cpuHand;
   $: {
     const result = judgeGame(yourHand, cpuHand);
     if (result.judge === "Lose") {
-      bet = 0;
+      message = "You Lost";
+      setTimeout(() => {
+        bet = 0;
+        isDone = result.isDone;
+        gameOn = !result.isDone;
+      }, 3000);
+    } else {
+      rewardTime = result.rewardTime;
+      isDone = result.isDone;
+      gameOn = !result.isDone;
     }
-    rewardTime = result.rewardTime;
-    isDone = result.isDone;
-    gameOn = !result.isDone;
   }
 </script>
 
-{#if yourHand}
-  <p>Your Hand:{yourHand} CPU Hand: {cpuHand}</p>
-{/if}
+<div class="messageBoard">
+  {#if yourHand}
+    <p>Your Hand:{yourHand} CPU Hand: {cpuHand}</p>
+  {/if}
+</div>
 {#if !isDone}
-  <button
-    on:click="{() => {
-      yourHand = 'Rock';
-      cpuHand = getRandomHand();
-    }}">Rock</button
-  >
-  <button
-    on:click="{() => {
-      yourHand = 'Paper';
-      cpuHand = getRandomHand();
-    }}">Paper</button
-  >
-  <button
-    on:click="{() => {
-      yourHand = 'Scissors';
-      cpuHand = getRandomHand();
-    }}">Scissors</button
-  >
+  <div class="buttons">
+    {#each hands as hand, i}
+      <button
+        on:click="{() => {
+          yourHand = hand;
+          cpuHand = getRandomHand();
+        }}">{hand}</button
+      >
+    {/each}
+  </div>
 {/if}
+
+<style>
+  .messageBoard {
+    height: 30px;
+  }
+</style>
