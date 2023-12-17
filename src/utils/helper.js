@@ -5,15 +5,22 @@ export const getRandomHand = () => {
 };
 
 export const judgeGame = (you, cpu) => {
+  const result = {
+    rewardTime: false,
+    isDone: false,
+  };
   if (you == cpu) {
-    return "Tie";
+    result["judge"] = "Tie";
   } else if (
     (you === "Rock" && cpu === "Scissors") ||
     (you === "Paper" && cpu === "Rock") ||
     (you === "Scissors" && cpu === "Paper")
   ) {
-    return "Win";
+    result["rewardTime"] = true;
+    result["judge"] = "Win";
   } else {
-    return "Lose";
+    result["isDone"] = true;
+    result["judge"] = "Lose";
   }
+  return result;
 };
