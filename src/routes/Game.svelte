@@ -35,6 +35,7 @@
   <div class="buttons">
     {#each hands as hand, i}
       <button
+        class="{hand} hand"
         on:click="{() => {
           yourHand = hand;
           cpuHand = getRandomHand();
@@ -47,5 +48,23 @@
 <style>
   .messageBoard {
     height: 30px;
+  }
+  .hand {
+    font-size: 1.6rem;
+    color: blue;
+    background-size: cover; /* Adjust as needed */
+    width: 150px; /* Set the width of the button */
+    height: 180px; /* Set the height of the button */
+    border: none; /* Remove default button border */
+    cursor: pointer;
+  }
+  .Rock {
+    background-image: url("../assets/images/grey-rock.png");
+  }
+  .Paper {
+    background-image: url("../assets/images/grey-paper.png");
+  }
+  .Scissors {
+    background-image: url("../assets/images/grey-scissors.png");
   }
 </style>
