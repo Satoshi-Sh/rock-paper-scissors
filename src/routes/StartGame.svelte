@@ -24,7 +24,7 @@
   </div>
 
   <button on:click="{increaseBet}">Insert Coin</button>
-  <div>
+  <div class="startDiv">
     {#if bet > 0}
       <button on:click="{startGame}">Start Game</button>
     {/if}
@@ -32,7 +32,8 @@
 </div>
 
 <style>
-  .messageDiv {
+  .messageDiv,
+  .startDiv {
     height: 30px;
   }
 </style>

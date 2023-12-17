@@ -7,20 +7,26 @@
   let bet = 0;
   let gameOn = false;
   let rewardTime = false;
+
+  $: isGameOver = coins + bet <= 0;
 </script>
 
 <div class="whole">
   <h1>Rock Paper Scissors</h1>
-  <p>Your Coins: {coins}</p>
-  <p>Bet: {bet}</p>
-  {#if gameOn}
-    {#if rewardTime}
-      <Reward bind:bet bind:coins bind:gameOn bind:rewardTime />
-    {:else}
-      <Game bind:bet bind:rewardTime bind:gameOn />
-    {/if}
+  {#if isGameOver}
+    <h3>You are broke...</h3>
   {:else}
-    <StartGame bind:bet bind:coins bind:gameOn />
+    <p>Your Coins: {coins}</p>
+    <p>Bet: {bet}</p>
+    {#if gameOn}
+      {#if rewardTime}
+        <Reward bind:bet bind:coins bind:gameOn bind:rewardTime />
+      {:else}
+        <Game bind:bet bind:rewardTime bind:gameOn />
+      {/if}
+    {:else}
+      <StartGame bind:bet bind:coins bind:gameOn />
+    {/if}
   {/if}
 </div>
 

@@ -1,5 +1,6 @@
 <script>
   import { resolveRoute } from "$app/paths";
+  import RandomImage from "./RandomImage.svelte";
   import { getRandomHand, judgeGame } from "../utils/helper";
   export let bet;
   export let rewardTime;
@@ -8,7 +9,8 @@
   let isDone = false;
   let message;
   let yourHand;
-  let cpuHand;
+  let intervalId;
+  let cpuHand = "Rock";
   $: {
     const result = judgeGame(yourHand, cpuHand);
     if (result.judge === "Lose") {
@@ -17,7 +19,9 @@
         bet = 0;
         isDone = result.isDone;
         gameOn = !result.isDone;
-      }, 3000);
+      }, 800);
+    } else if (result.judge === "Tie") {
+      message = "Choose your hand again!!";
     } else {
       rewardTime = result.rewardTime;
       isDone = result.isDone;
@@ -28,17 +32,18 @@
 
 <div class="messageBoard">
   {#if yourHand}
-    <p>Your Hand:{yourHand} CPU Hand: {cpuHand}</p>
+    <p>{message}</p>
   {/if}
 </div>
 {#if !isDone}
+  <RandomImage />
   <div class="buttons">
     {#each hands as hand, i}
       <button
         class="{hand} hand"
         on:click="{() => {
           yourHand = hand;
-          cpuHand = getRandomHand();
+          cpuHand = cpuHand;
         }}">{hand}</button
       >
     {/each}
@@ -47,7 +52,7 @@
 
 <style>
   .messageBoard {
-    height: 30px;
+    height: 50px;
   }
   .hand {
     font-size: 1.6rem;
