@@ -22,7 +22,7 @@
       gameOn = false;
       rewardTime = false;
       bet = 0;
-    }, 3000);
+    }, 4000);
   };
 </script>
 

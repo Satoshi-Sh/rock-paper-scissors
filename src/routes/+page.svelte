@@ -3,10 +3,15 @@
   import StartGame from "./StartGame.svelte";
   import Game from "./Game.svelte";
   import Reward from "./Reward.svelte";
+  import RandomImage from "./RandomImage.svelte";
   let coins = 10;
   let bet = 0;
   let gameOn = false;
   let rewardTime = false;
+
+  const startOver = () => {
+    coins = 10;
+  };
 
   $: isGameOver = coins + bet <= 0;
 </script>
@@ -15,6 +20,7 @@
   <h1>Rock Paper Scissors</h1>
   {#if isGameOver}
     <h3>You are broke...</h3>
+    <button on:click="{startOver}">Start Over</button>
   {:else}
     <p>Your Coins: {coins}</p>
     <p>Bet: {bet}</p>

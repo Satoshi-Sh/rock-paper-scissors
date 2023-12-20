@@ -3,18 +3,32 @@
   import paperImg from "../assets/images/grey-paper.png";
   import scisorsImg from "../assets/images/grey-scissors.png";
   import { getRandomHand } from "../utils/helper";
+  import { onMount, onDestroy } from "svelte";
+
   const images = { Rock: rockImg, Paper: paperImg, Scissors: scisorsImg };
+
+  export let cpuHand;
   let intervalId;
   let temp = "Rock";
-  intervalId = setInterval(() => {
-    console.log(getRandomHand());
-    temp = getRandomHand();
-  }, 3000);
-  $: clearInterval(intervalId);
+  // Start the interval when the component is mounted
+  onMount(() => {
+    intervalId = setInterval(() => {
+      temp = getRandomHand();
+    }, 100);
+  });
+
+  // Clear the interval when the component is destroyed
+  onDestroy(() => {
+    clearInterval(intervalId);
+  });
 </script>
 
 <div class="cpuDiv">
-  <img class="cpu" src="{images[temp]}" alt="CPU hand" />
+  <img
+    class="cpu"
+    src="{cpuHand ? images[cpuHand] : images[temp]}"
+    alt="CPU hand"
+  />
   <h4>CPU</h4>
 </div>
 
