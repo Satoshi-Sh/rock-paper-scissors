@@ -1,9 +1,7 @@
 <script>
-  import sveltePreprocess from "svelte-preprocess";
   import StartGame from "./StartGame.svelte";
   import Game from "./Game.svelte";
   import Reward from "./Reward.svelte";
-  import RandomImage from "./RandomImage.svelte";
   let coins = 10;
   let bet = 0;
   let gameOn = false;

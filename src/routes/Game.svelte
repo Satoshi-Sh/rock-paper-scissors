@@ -65,7 +65,7 @@
   </div>
 {/if}
 
-<style>
+<style lang="scss">
   .messageBoard {
     height: 50px;
   }

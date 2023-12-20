@@ -32,7 +32,7 @@
   <h4>CPU</h4>
 </div>
 
-<style>
+<style lang="scss">
   .cpu {
     width: 150px; /* Set the width of the button */
     height: 180px;

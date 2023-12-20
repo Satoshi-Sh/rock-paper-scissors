@@ -31,7 +31,7 @@
   </div>
 </div>
 
-<style>
+<style lang="scss">
   .messageDiv,
   .startDiv {
     height: 30px;
