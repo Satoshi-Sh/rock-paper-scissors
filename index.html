@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="./favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+		<link href="./_app/immutable/assets/2.AwTq7BRw.css" rel="stylesheet">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.6g6bXkRD.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/scheduler.0tGaCkR8.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.VKV1sd0i.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.7EnfKisL.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.WGk6GiA3.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/0.mUgkmZAR.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/2.ek6Xlu9Y.js">
+  </head>
+  <body data-sveltekit-preload-data="hover" style="margin: 0; padding: 0">
+    <div style="display: contents">  <div class="whole svelte-hk004k"><h1 data-svelte-h="svelte-1dr2ito">Rock Paper Scissors</h1> <p>Your Coins: 10</p> <p>Bet: 0</p> <div><div class="messageDiv svelte-e1gay7"></div> <button data-svelte-h="svelte-1ixapaz">Insert Coin</button> <div class="startDiv svelte-e1gay7"></div> </div> </div> 
+			
+			<script>
+				{
+					__sveltekit_15i2p9a = {
+						assets: "/rock-paper-scissors",
+						base: new URL(".", location).pathname.slice(0, -1),
+						env: null
+					};
+
+					const element = document.currentScript.parentElement;
+
+					const data = [null,null];
+
+					Promise.all([
+						import("./_app/immutable/entry/start.6g6bXkRD.js"),
+						import("./_app/immutable/entry/app.7EnfKisL.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 2],
+							data,
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+  </body>
+</html>
