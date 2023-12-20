@@ -1,4 +1,4 @@
-import adapter from "@sveltejs/adapter-static";
+import adapter from "svelte-adapter-github";
 import { vitePreprocess } from "@sveltejs/vite-plugin-svelte";
 
 const dev = "production" === "development";
@@ -10,8 +10,10 @@ const config = {
     adapter: adapter({
       pages: "docs",
       assets: "docs",
-      fallback: "error.html",
-      strict: false,
+      fallback: null,
+      precompress: false,
+      domain: "",
+      jekyll: false,
     }),
     paths: {
       // change below to your repo name
